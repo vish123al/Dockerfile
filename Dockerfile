@@ -1,9 +1,9 @@
 FROM ubuntu:14.04
 MAINTAINER Docker Education Team <education@docker.com>
 RUN apt-get update
-sh 'wget -qO- https://get.docker.com/'
-sh 'usermod -aG docker $(whoami)'
-sh 'apt-get -y install python-pip'
-sh 'pip install docker-compose'
-sh 'docker-compose up'
+RUN wget -qO- https://get.docker.com/ | sh
+RUN usermod -aG docker $(whoami)
+RUN apt-get -y install python-pip
+RUN pip install docker-compose
+RUN docker-compose up
 
