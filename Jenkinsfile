@@ -9,5 +9,7 @@ node {
     // Checkout source code from Git
     stage 'Checkout'
     checkout scm
+     sh "docker build -t vishaldenge/jenkinsfile1:${gitCommit()} ."
+
     
     }
