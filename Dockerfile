@@ -1,8 +1,9 @@
 FROM ubuntu:14.04
 MAINTAINER Docker Education Team <education@docker.com>
 RUN apt-get update
-RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-RUN chmod +x /usr/local/bin/docker-compose
-RUN docker-compose --version
-
+sh 'wget -qO- https://get.docker.com/ | sh'
+sh 'usermod -aG docker $(whoami)'
+sh 'apt-get -y install python-pip'
+sh 'pip install docker-compose'
+sh 'docker-compose up'
 
